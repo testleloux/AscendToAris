@@ -1,6 +1,6 @@
 // Sostituisci null con la configurazione del tuo progetto Firebase (vedi SETUP.md):
 // window.FIREBASE_CONFIG={apiKey:"...",authDomain:"...",projectId:"...",appId:"..."};
-window.FIREBASE_CONFIG=null;
+window.FIREBASE_CONFIG={apiKey:"...",authDomain:"...",projectId:"...",appId:"..."}
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
