@@ -1,0 +1,31 @@
+{
+  "name": "ascendtoaris",
+  "version": "1.0.0",
+  "description": "Repository per una web app personale.",
+  "main": "firebase-config.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/testleloux/AscendToAris.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/testleloux/AscendToAris/issues"
+  },
+  "homepage": "https://github.com/testleloux/AscendToAris#readme",
+  "dependencies": {
+    "firebase": "^13.2.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.6",
+    "vite-plugin-pwa": "^2.0.0"
+  }
+}
