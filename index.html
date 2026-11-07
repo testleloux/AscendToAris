@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#050b18">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -235,7 +235,7 @@
       function phase(k,L){const a=S.q[k]=S.q[k]||[];return `<div class="win"><h1>${k==='wu'?'🔥 Riscaldamento':'🧘 Defaticamento'} · ~${Math.round(L.reduce((t,x)=>t+x[1],0)/60)} min</h1>`+L.map((x,i)=>`<span class="chip ${a[i]?'on':''}" onclick="ph('${k}',${i},${x[1]})">${a[i]?'✓ ':''}${x[0]} ${x[1]}s</span>`).join('')+`<div class="mu">Tocca per avviare il timer. Completandone 2 ottieni +20 XP.</div></div>`}
       function ph(k,i,t){if(!S.q.st){toast('Premi “Inizia missione” per cominciare');return}const a=S.q[k];a[i]=!a[i];save();render();if(a[i])rStart(t)}
       let C=[],busy=false;
-      const GU='https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+      const GU='https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent';
       const sys=()=>`Sei il coach di Ascend, app di allenamento. Rispondi in italiano, breve e pratico. Dai consigli generali di fitness e alimentazione, non mediche o dietetiche: per dolori, infortuni o problemi di salute consiglia un professionista. Utente: sesso ${S.pf.sx==='f'?'F':'M'}, età ${S.pf.age||'?'}, altezza ${S.pf.h||'?'} cm, peso ${S.pf.w||'?'} kg, obiettivo peso ${S.pf.tg||'?'} kg, fisico desiderato ${S.ph?PHN[S.ph]:'non specificato'}, livello ${S.lvl}, obiettivo ${S.goal}, durata ${S.m||'?'} min, giorni ${S.days.map(d=>DN[d]).join(',')}. Programma attuale: ${S.plan.map(e=>`${e.n} ${e.sets}x${e.reps}${e.t==='t'?'s':''}${e.w?' '+e.w+'kg':''}`).join('; ')}.`;
       async function gem(msgs,json){const r=await fetch(GU,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':S.key},body:JSON.stringify({systemInstruction:{parts:[{text:sys()}]},contents:msgs.map(m=>({role:m.r,parts:[{text:m.t}]})),generationConfig:json?{responseMimeType:'application/json'}:{}})});const d=await r.json();if(d.error)throw new Error(d.error.message);return d.candidates[0].content.parts.map(x=>x.text||'').join('')}
       async function ask(prog){const t=$('cq').value.trim();if(!t||busy)return;if(!S.key){alert('Inserisci prima la chiave Gemini.');return}busy=true;
